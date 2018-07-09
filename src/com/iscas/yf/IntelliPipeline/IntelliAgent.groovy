@@ -255,7 +255,7 @@ public class IntelliAgent{
     @NonCPS
     def executePostRequest(body){
 
-        def post = new URL(http://39.104.105.27:8888/IntelliPipeline/build_data/upload").openConnection();
+        def post = new URL(http://localhost:8888/IntelliPipeline/build_data/upload").openConnection();
 
         post.setRequestMethod("POST")
         post.setDoOutput(true)
