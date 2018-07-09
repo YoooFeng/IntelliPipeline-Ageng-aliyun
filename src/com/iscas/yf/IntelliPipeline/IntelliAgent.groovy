@@ -41,7 +41,7 @@ public class IntelliAgent{
 //                // 创建一个Http对象，向服务端发送请求
 //                def http = new HTTPBuilder('http://39.104.105.27:8888')
 //                http.request(GET, TEXT) { req ->
-//                    // 设置url相关信息 - http://localhost:8180/IntelliPipeline/upload
+//                    // 设置url相关信息 - http://39.104.105.27:8888/IntelliPipeline/upload
 //                    uri.path='/IntelliPipeline/upload'
 //
 //                    // 设置请求头信息
@@ -152,10 +152,10 @@ public class IntelliAgent{
 //                        httpMode:'POST',
 //                        requestBody: body,
 //                        consoleLogResponseBody: true,
-//                        url: "http://localhost:8180/IntelliPipeline/build_data/upload")
+//                        url: "http://39.104.105.27:8888/IntelliPipeline/build_data/upload")
 
                 // 抛弃使用HttpRequest Plugin, 改为Groovy原生方法
-//                def post = new URL("http://localhost:8180/IntelliPipeline/build_data/upload").openConnection();
+//                def post = new URL("http://39.104.105.27:8888/IntelliPipeline/build_data/upload").openConnection();
 //
 //                post.setRequestMethod("POST")
 //                post.setDoOutput(true)
@@ -255,7 +255,7 @@ public class IntelliAgent{
     @NonCPS
     def executePostRequest(body){
 
-        def post = new URL("http://localhost:8180/IntelliPipeline/build_data/upload").openConnection();
+        def post = new URL(http://39.104.105.27:8888/IntelliPipeline/build_data/upload").openConnection();
 
         post.setRequestMethod("POST")
         post.setDoOutput(true)
