@@ -39,7 +39,7 @@ public class IntelliAgent{
 //                logger "Try-catch block entering"
 //                // TODO: 如何接受返回来的字符串？
 //                // 创建一个Http对象，向服务端发送请求
-//                def http = new HTTPBuilder('http://localhost:8180')
+//                def http = new HTTPBuilder('http://39.104.105.27:8888')
 //                http.request(GET, TEXT) { req ->
 //                    // 设置url相关信息 - http://localhost:8180/IntelliPipeline/upload
 //                    uri.path='/IntelliPipeline/upload'
