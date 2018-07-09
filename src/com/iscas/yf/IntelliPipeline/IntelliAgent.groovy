@@ -258,7 +258,7 @@ public class IntelliAgent{
         def post = new URL(http://localhost:8888/IntelliPipeline/build_data/upload").openConnection();
 
         post.setRequestMethod("POST")
-        post.setDoOutput(true)
+//        post.setDoOutput(true)
         post.setRequestProperty("Content-Type", "application/json")
         post.getOutputStream().write(body.getBytes("UTF-8"))
         def postResponseCode = post.getResponseCode()
