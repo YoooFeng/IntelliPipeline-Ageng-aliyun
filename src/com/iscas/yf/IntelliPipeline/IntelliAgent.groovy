@@ -115,11 +115,13 @@ public class IntelliAgent{
 
                 if(postResponseContent != ""){
                     // 调用invokeMethod方法执行step, node也可以赋予参数实现分布式执行
-                    // executeStep(stepName, stepParams)
-                    this.scripts.steps.invokeMethod(stepName, stepParams)
+                    def res = executeStep(stepName, stepParams)
+                    // this.scripts.steps.invokeMethod(stepName, stepParams)
 
                     if(stepName.equals("git")) {
                         requestType = "INIT"
+                    } else if(!res) {
+                        requestType = "FAILURE"
                     } else {
                         requestType = "RUNNING"
                     }
@@ -131,7 +133,7 @@ public class IntelliAgent{
                     sleep(5000);
                 }
             }
-        } catch(err) {
+        } catch(Exception err) {
             this.scripts.steps.echo("An error occurred: " + err)
             // Step执行出错了
             // requestType = "error"
@@ -171,19 +173,18 @@ public class IntelliAgent{
         return ""
     }
 
-    def executeStep(String stepName, Map<String, Object> stepParams){
+    def executeStep(String stepName, Map<String, Object> stepParams) {
         // 调用invokeMethod方法执行step, node也可以赋予参数实现分布式执行
         this.scripts.steps.node(){
             try{
                 this.scripts.steps.invokeMethod(stepName, stepParams)
-            } catch(err) {
+                return true
+            } catch(Exception err) {
                 this.currentBuild.result = 'FAILURE'
-                throw err
+                return false
             }
         }
     }
-
-
 }
 
 
