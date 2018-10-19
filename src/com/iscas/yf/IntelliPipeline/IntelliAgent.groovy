@@ -64,7 +64,11 @@ public class IntelliAgent{
                          "durationTime": "$durationTime"}
                     """
                 }
-
+                
+                if(requestType == "FAILURE") {
+                    falg = false;
+                }
+                
                 def postResponseContent = executePostRequest(body)
 
                 this.scripts.steps.echo("Response: $postResponseContent")
