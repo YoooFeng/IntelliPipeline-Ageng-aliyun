@@ -115,7 +115,8 @@ public class IntelliAgent{
 
                 if(postResponseContent != ""){
                     // 调用invokeMethod方法执行step, node也可以赋予参数实现分布式执行
-                    executeStep(stepName, stepParams)
+                    // executeStep(stepName, stepParams)
+                    this.scripts.steps.invokeMethod(stepName, stepParams)
 
                     if(stepName.equals("git")) {
                         requestType = "INIT"
