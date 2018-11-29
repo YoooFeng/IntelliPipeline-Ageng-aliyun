@@ -133,11 +133,22 @@ public class IntelliAgent{
                     sleep(5000);
                 }
             }
-        } catch(Exception err) {
-            this.scripts.steps.echo("An error occurred: " + err)
+        } catch(err) {  
+             this.scripts.steps.echo("Catch block.")
             // Step执行出错了
             // requestType = "error"
             requestType = "FAILURE"
+            body = """
+                        {"requestType": "$requestType",
+                         "stepNumber": "$stepNumber",
+                         "buildNumber": "0",
+                         "currentResult": "$currentResult",
+                         "jobName" : "$jobName",
+                         "durationTime": "$durationTime"}
+                    """
+            // 失败的构建, 直接将失败结果返回
+            def postResponseContent = executePostRequest(body)
+            break;
         }
     }
 
