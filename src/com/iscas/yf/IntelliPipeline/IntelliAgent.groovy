@@ -39,7 +39,18 @@ public class IntelliAgent{
 
                 def currentResult = this.scripts.currentBuild.currentResult
                 this.scripts.steps.echo("currentResult: " + currentResult)
-
+                if(currentResult == 'FAILURE') {
+                    flag = false
+                    def requestErrorType = "FAILURE"
+                    def ebody = """
+                        {"requestType": "$requestErrorType"}
+                    """
+                    // 失败的构建, 直接将失败结果返回
+                    def postResponseContent = executePostRequest(ebody)
+                    this.scripts.steps.echo("Error: " + postResponseContent)
+                    break;
+                }
+                
                 def buildNumber = this.scripts.currentBuild.number
 
                 def body = """ """
@@ -137,13 +148,13 @@ public class IntelliAgent{
              this.scripts.steps.echo("Catch block.")
             // Step执行出错了
             // requestType = "error"
-            def requestErrorType = "FAILURE"
-            def ebody = """
+             def requestErrorType = "FAILURE"
+             def ebody = """
                         {"requestType": "$requestErrorType"}
                     """
             // 失败的构建, 直接将失败结果返回
             def postResponseContent = executePostRequest(ebody)
-            break;
+
         }
     }
 
