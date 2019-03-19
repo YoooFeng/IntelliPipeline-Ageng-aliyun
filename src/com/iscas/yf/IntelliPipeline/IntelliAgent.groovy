@@ -80,6 +80,8 @@ public class IntelliAgent{
                     falg = false;
                 }
                 
+                this.scripts.steps.echo("RequestBody:" + body)
+                
                 def postResponseContent = executePostRequest(body)
 
                 this.scripts.steps.echo("Response: $postResponseContent")
