@@ -180,7 +180,7 @@ public class IntelliAgent{
             postResponseContent = post.getInputStream().getText();
             return postResponseContent
         }
-        return ""
+        return "Connection Error"
     }
 
     def executeStep(String stepName, Map<String, Object> stepParams) {
