@@ -39,6 +39,12 @@ public class IntelliAgent{
 
                 def currentResult = this.scripts.currentBuild.currentResult
                 this.scripts.steps.echo("currentResult: " + currentResult)
+                
+                def jobName = this.scripts.env.JOB_NAME
+                this.scripts.steps.echo("Job_Name: " + this.scripts.env.JOB_NAME)
+                
+                def buildNumber = this.scripts.currentBuild.number
+                
                 if(currentResult == 'FAILURE') {
                     flag = false
                     def requestErrorType = "FAILURE"
@@ -50,8 +56,6 @@ public class IntelliAgent{
                     this.scripts.steps.echo("Error: " + postResponseContent)
                     break;
                 }
-                
-                def buildNumber = this.scripts.currentBuild.number
 
                 def body = """ """
 
@@ -64,6 +68,7 @@ public class IntelliAgent{
                          "buildNumber": "$buildNumber",
                          "currentResult": "$currentResult",
                          "commitSet": "$commitSet",
+                         "jobName" : "$jobName",
                          "durationTime": "$durationTime"}
                     """
                 } else {
@@ -72,6 +77,7 @@ public class IntelliAgent{
                          "stepNumber": "$stepNumber",
                          "buildNumber": "$buildNumber",
                          "currentResult": "$currentResult",
+                         "jobName" : "$jobName",
                          "durationTime": "$durationTime"}
                     """
                 }
