@@ -140,9 +140,6 @@ public class IntelliAgent{
             requestType = "FAILURE"
             body = """
                         {"requestType": "$requestType",
-                         "stepNumber": "$stepNumber",
-                         "buildNumber": "0",
-                         "jobName" : "$jobName",
                          "durationTime": "$durationTime"}
                     """
             // 失败的构建, 直接将失败结果返回
