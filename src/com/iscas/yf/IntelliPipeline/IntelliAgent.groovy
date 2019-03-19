@@ -142,7 +142,6 @@ public class IntelliAgent{
                         {"requestType": "$requestType",
                          "stepNumber": "$stepNumber",
                          "buildNumber": "0",
-                         "currentResult": "$currentResult",
                          "jobName" : "$jobName",
                          "durationTime": "$durationTime"}
                     """
