@@ -49,7 +49,8 @@ public class IntelliAgent{
                     flag = false
                     def requestErrorType = "FAILURE"
                     def ebody = """
-                        {"requestType": "$requestErrorType"}
+                        {"requestType": "$requestErrorType",
+                         "buildNumber": "$buildNumber"}
                     """
                     // 失败的构建, 直接将失败结果返回
                     def postResponseContent = executePostRequest(ebody)
